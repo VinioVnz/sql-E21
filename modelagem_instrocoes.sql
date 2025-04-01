@@ -1,0 +1,33 @@
+CREATE TABLE hospede(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
+    cpf CHAR(11) NOT NULL UNIQUE,
+    telefone CHAR(14) NOT NULL,
+    email VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE quarto(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    numero INT NOT NULL UNIQUE,
+    tipo TINYINT(1) NOT NULL DEFAULT 0,
+    `status` TINYINT(1) NOT NULL DEFAULT 0,
+);
+
+CREATE TABLE reserva(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    data_checkin TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    data_checkout TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    hospede_id INT NOT NULL,
+    quarto_id INT NOT NULL,
+    CONSTRAINT `fk_hospede`
+    FOREIGN KEY (hospede_id) REFERENCES hospede (id)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION,
+
+    CONSTRAINT `fk_quarto`
+    FOREIGN KEY (quarto_id) REFERENCES quarto (id)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION
+    
+    
+);
