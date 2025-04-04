@@ -35,7 +35,7 @@ DDL -> DATA DEFINITION LANGUAGE (LINGAUGEM DE DEFINIÇÃO DE DADOS)
 COMANDOS RELACIONADOS: CREATE, ALTER, DROP, TRUNCATE
 EXEMPLOS: 
 CREATE TABLE nome_tabela
-ALTER TABLE nome_tabela
+ALTER TABLE nome_tabela  ADD campo INT 
 DROP TABLE nome_tabela
 TRUNCATE TABLE nome_tabela
 
@@ -50,6 +50,18 @@ DML -> DATA MANIPULATION LANGUAGE (LINGAGUEM DE MANIPULAÇÃO DE DADOS)
     UPDATE nome_tabela
     DELETE from nome_tabela
 
+INSERT INTO categorias 
+(titulo, ativo, ordem) 
+VALUES
+('Eletrônicos', 0, null),
+('Móveis', 1, 1);
+
+UPDATE categorias SET titulo = 'Eletrônicos' WHERE id = 1;
+UPDATE categorias SET titulo = 'Mercearia', ordem = 0 WHERE id = 2;
+
+DELETE FROM categorias WHERE id = 1;
+DELETE FROM categorias WHERE ativo = 0 LIMIT 2;
+DELETE FROM categorias WHERE id IN(2,4,6,8,9);
 -----------------------------------------
 
 DQL -> DATA QUERY LANGUAGE (LINGUAGEM DE CONSULTA DE DADOS)
