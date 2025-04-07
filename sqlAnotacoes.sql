@@ -72,6 +72,81 @@ DQL -> DATA QUERY LANGUAGE (LINGUAGEM DE CONSULTA DE DADOS)
     EXEMPLO : SELECT * FROM nome_tabela ( * = TODAS AS COLUNAS DE UMA TABELA. É POSSIVEL TAMBÉM INFROMAR O NOME DE COLUNAS
     SEPARANDO-AS POR VÍRGULA)
 
+
+SELECT * FROM produtos
+WHERE
+-- id  = 1
+-- id > 10
+-- id < 10
+-- id >= 50
+-- id != 10
+ preco > 10 AND preco < 100
+
+
+SELECT id, nome FROM produtos
+WHERE
+ preco > 10 AND preco < 100
+
+
+SELECT * FROM produtos
+WHERE
+ (preco > 500 AND preco < 1000) OR preco = 50
+
+
+SELECT * FROM produtos
+WHERE
+id IN(2,3,15,26,40) 
+
+SELECT * FROM produtos
+WHERE
+preco BETWEEN 100 AND 500 -- usa isso pra data
+ORDER BY preco DESC -- use ASC para ordenar crescente 
+LIMIT 5 -- limita em 5 registros
+-- LIMIT 10,5 (limita do decimo registro até o 15)
+
+---------------- LIKE ---------------------
+
+SELECT * FROM produtos
+WHERE
+nome like '% para %'
+
+SELECT * FROM produtos
+WHERE
+nome like 'Ca__teira%'
+
+
+-----------------------------------------
+
+--FUNÇÕES AGREGADAS
+
+SELECT 
+COUNT(*) AS total -- soma a quantidade de linhas n nulas
+SUM(preco) AS soma, -- soma todos os itens de uma coluna especifica
+AVG(preco) AS media, -- calcula a media dos valores de uma coluna especifica
+MIN(preco) AS minimo, -- mostra o valor minimo de uma coluna especifica
+MAX(preco) as maximo -- mostra o valor maximo de uma coluna especifica
+FROM 
+produtos
+
+SELECT 
+COUNT(*) AS total,
+from_categorias
+FROM 
+produtos
+GROUP BY from_categorias
+
+
+SELECT
+produtos.id,
+produtos.nome,
+produtos.preco,
+categorias.titulo
+FROM 
+produtos
+INNER JOIN categorias ON produtos.from_categorias = categorias.id
+
+
+
 -----------------------------------------
 
 DCL -> DATA CONTROL LANGUAGE (LINGUAGEM DE CONTROLE DE DADOS)
