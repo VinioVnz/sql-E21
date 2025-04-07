@@ -54,7 +54,10 @@ Mostre também:
 SELECT 
 produtos.nome,
 produtos.preco,
-categorias.titulo
+categorias.titulo,
+COUNT(*) as total,
+AVG(produtos.preco) AS media,
+MAX(produtos.preco) AS maisCaro
 FROM
 produtos
 INNER JOIN categorias ON produtos.from_categorias = categorias.id 
@@ -63,7 +66,7 @@ WHERE
 AND
 (categorias.ativo = 1)
 AND
-produtos.nome LIKE '%para%'
-GROUP BY categorias.titulo, 
-categorias.ativo, 
-produtos.nome;
+produtos.nome LIKE '%a%'
+GROUP BY  
+categorias.titulo,
+categorias.ativo;
