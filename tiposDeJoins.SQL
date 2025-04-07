@@ -14,7 +14,7 @@ produtos.preco,
 categorias.titulo
 FROM 
 produtos
-INNER T JOIN categorias ON produtos.from_categorias = categorias.id
+INNER JOIN categorias ON produtos.from_categorias = categorias.id
 
 
 
