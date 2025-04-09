@@ -62,7 +62,7 @@ FROM
 produtos
 INNER JOIN categorias ON produtos.from_categorias = categorias.id 
 WHERE
-(produtos.preco > 10 AND produtos.preco < 500) 
+(preco BETWEEN 10 AND 500) 
 AND
 (categorias.ativo = 1)
 AND
@@ -70,3 +70,14 @@ produtos.nome LIKE '%a%'
 GROUP BY  
 categorias.titulo,
 categorias.ativo;
+
+---------------------------------------
+SELECT 
+nome,
+nota1,
+nota2,
+nota3,
+ROUND((nota1 + nota2 + nota3) /3,2) AS media,
+IF ((nota1 + nota2 + nota3)/3 >= 6 ,'Aprovado','Reprovado') AS situacao
+FROM
+alunos;

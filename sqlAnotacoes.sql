@@ -174,3 +174,34 @@ TCL -> TRANSCRITION CONTROL LANGUAGE (LINUGUGAEM DE CONTROLE DE TRANSAÇÕES)
     ROLLBACK; --SE ALGO DER ERRADO
 
     RELEASE SAVEPOINT nome_transacao
+
+
+
+
+
+
+
+    APELIDOS:
+    PARA APELIDAR AS TABELAS EM UM SELECT VC PODE FAZER DA SEGUINTE FORMA:
+SELECT 
+p.nome, --DEPOIS SUBSTITUA PRA CADA CAMPO UTILIZADO
+p.preco,
+c.titulo,
+COUNT(p.id) as total,
+AVG(p.preco) AS media,
+MAX(p.preco) AS maisCaro
+FROM
+produtos p --DEPOIS DA TABELA ESCREVA O 'APELIDO'
+INNER JOIN categorias c ON p.from_categorias = c.id 
+WHERE
+(preco BETWEEN 10 AND 500) 
+AND
+(c.ativo = 1)
+AND
+p.nome LIKE '%a%'
+GROUP BY  
+c.titulo,
+c.ativo;
+
+
+
