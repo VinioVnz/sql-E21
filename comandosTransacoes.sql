@@ -13,10 +13,13 @@ INSERT INTO contas(nome,saldo) VALUES
 */
 
 START TRANSACTION;
-UPDATE contas SET saldo = saldo - 200 WHERE nome = 'Fernanda';
-UPDATE contas SET saldo = saldo + 200 WHERE nome = 'Vinicius';
+UPDATE contas SET saldo = saldo + 300 WHERE nome = 'Fernanda';
+SAVEPOINT depois_fernanda;
+UPDATE contas SET saldo = saldo - 100 WHERE nome = 'Vinicius';
+
+
+ROLLBACK TO depois_fernanda;
+
 COMMIT;
 
-
-ROLLBACK; -- DESFAZ
 
